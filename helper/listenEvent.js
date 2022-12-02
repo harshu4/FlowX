@@ -14,8 +14,10 @@ eventbind = async (contract_address, evento, callback) => {
         let abi;
         
         if (!(contract_address in abimap)) {
+            
 
             abi = await getabi(contract_address, web3)
+            console.log(abi)
 
 
 
@@ -80,7 +82,18 @@ exports.handlecontracts = async (contractmap, callback) => {
 
 
 
+exports.getabi = async (contract_address) => {
+    try{
+        console.log(contract_address)
+    let abi = await getabi(contract_address);
+    return abi;
+    }
+    catch(err){
+        console.log(err);
+        return;
 
+    }
+}
 
 
 getabi = async (contract_address) => {
