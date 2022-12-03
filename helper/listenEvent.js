@@ -1,6 +1,6 @@
 const { parseTransaction, id } = require('ethers/lib/utils');
-var Web3 = require('web3')
-
+const Web3 = require('web3')
+const GetAbi = require('./getabi')
 
 
 
@@ -86,7 +86,7 @@ exports.getabi = async (contract_address) => {
     try{
         console.log(contract_address)
     let abi = await getabi(contract_address);
-    return abi;
+    return JSON.parse(abi);
     }
     catch(err){
         console.log(err);
@@ -95,6 +95,12 @@ exports.getabi = async (contract_address) => {
     }
 }
 
+
+exports.getabiview = async(contract_address) =>{
+    let abi = await GetAbi.loadAbi(contract_address,web3);
+    return abi;
+    
+}
 
 getabi = async (contract_address) => {
     try {

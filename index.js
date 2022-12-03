@@ -1,13 +1,19 @@
 const express = require('express');
 const call = require("./helper/listenEvent.js");
+const logic = require("./helper/logic")
 const app = express();
 var bodyParser = require('body-parser')
+const cors = require('cors');
 const port = 4040;
+
 
 
 var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 app.use(bodyParser.json())
+app.use(cors({
+    origin: '*'
+}));
 
 
 
@@ -20,6 +26,21 @@ app.post('/getdata', async (req, res) => {
         let abc = await call.handlecontracts(req.body.contractmap, tell);
         console.log('here')
         res.send({ status: true })
+    }
+    catch (err) {
+        res.send({ status: false })
+
+    }
+});
+
+
+
+app.get('/getabiview', async (req, res) => {
+    try {
+        console.log(req.query.contractadd)
+        let abi = await call.getabiview(req.query.contractadd);
+        console.log('here')
+        res.send({ status: true ,abi:abi})
     }
     catch (err) {
         res.send({ status: false })
