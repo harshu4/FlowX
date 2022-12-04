@@ -3,6 +3,25 @@
 	"last_link_id": 10,
 	"nodes": [
 		{
+			"id": 3,
+			"type": "basic/const",
+			"pos": [669, 396],
+			"size": [180, 30],
+			"flags": {},
+			"order": 0,
+			"mode": 0,
+			"outputs": [
+				{
+					"name": "value",
+					"type": "number",
+					"links": [2],
+					"label": "1000.000",
+					"slot_index": 0
+				}
+			],
+			"properties": { "value": 1000 }
+		},
+		{
 			"id": 4,
 			"type": "math/condition",
 			"pos": [1088, 330],

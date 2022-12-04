@@ -9,6 +9,7 @@ const url_websocket = new Web3.providers.WebsocketProvider(process.env.PROVIDER_
 var web3 = new Web3(url_websocket)
 const etherscanapikey = "5VCFTXJXHI38P9MEMQDR8TWYZHSUTZUHQ4"
 let eventss;
+let contract;
 eventbind = async (contract_address, evento, callback) => {
     try {
         let abi;
@@ -26,7 +27,7 @@ eventbind = async (contract_address, evento, callback) => {
             abi = abimap[contract_address];
         }
 
-        let contract = new web3.eth.Contract(JSON.parse(abi), contract_address)
+         contract = new web3.eth.Contract(JSON.parse(abi), contract_address)
 
         eventss = contract.events.allEvents(() => {
         }).on("connected", function (subscriptionId) {
@@ -58,7 +59,7 @@ eventbind = async (contract_address, evento, callback) => {
 
 }
 
-
+exports.providers = web3;
 
 
 exports.handlecontracts = async (contractmap, callback) => {
@@ -66,6 +67,7 @@ exports.handlecontracts = async (contractmap, callback) => {
       eventss.unsubscripbe;
   }
     try {
+       
        
         for (var i in contractmap) {
            
