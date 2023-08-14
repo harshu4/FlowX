@@ -12,7 +12,7 @@
   "dependencies": {
     "@apollo/client": "^3.7.1",
     "@pushprotocol/restapi": "^0.2.2",
-    "@shazow/whatsabi": "^0.2.1",
+    "@shazow/whatsabi": "^0.5.0",
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
     "ethers": "^5.7.2",
